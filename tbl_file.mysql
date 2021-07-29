@@ -1,0 +1,18 @@
+create table tbl_file
+(
+    id        int auto_increment
+        primary key,
+    file_sha1 char(40)      default '' not null,
+    file_name varchar(256)  default '' not null,
+    file_size bigint        default 0 null,
+    file_addr varchar(1024) default '' not null,
+    create_at datetime      default CURRENT_TIMESTAMP null,
+    update_at datetime      default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP,
+    status    int           default 0  not null,
+    ext1      int           default 0  not null,
+    ext2      text null,
+    constraint idx_file_hash
+        unique (file_sha1),
+    constraint idx_status
+        unique (status)
+);
